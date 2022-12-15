@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -73,3 +74,11 @@ Route::prefix('post')->group(function(){
     Route::get('/user/{id}', [PostController::class, 'showUserCity']);
 
 });
+
+
+Route::prefix('country')->group(function(){
+    Route::get('add', [CountryController::class, 'add']);
+    Route::get('show',[CountryController::class, 'show']);
+});
+
+Route::get('/test', 'TestController@test');
