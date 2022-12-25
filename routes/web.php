@@ -3,6 +3,7 @@
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,4 +82,7 @@ Route::prefix('country')->group(function(){
     Route::get('show',[CountryController::class, 'show']);
 });
 
-Route::get('/test', 'TestController@test');
+Route::prefix('user')->group(function(){
+    Route::get('add', [UserController::class, 'add']);
+    Route::get('show', [UserController::class, 'show']);
+});
