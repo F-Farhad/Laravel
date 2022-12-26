@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
@@ -69,9 +70,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('post')->group(function(){
+    Route::get('show', [PostController::class, 'show']);
+    Route::match(['get', 'post'], '/add', [PostController::class, 'addForm']);
 
     Route::get('test', [PostController::class, 'test']);
-
     Route::get('/user/{id}', [PostController::class, 'showUserCity']);
 
 });
@@ -85,4 +87,9 @@ Route::prefix('country')->group(function(){
 Route::prefix('user')->group(function(){
     Route::get('add', [UserController::class, 'add']);
     Route::get('show', [UserController::class, 'show']);
+});
+
+Route::prefix('category')->group(function(){
+    Route::get('add', [CategoryController::class, 'add']);
+    Route::get('show/{id}', [CategoryController::class, 'show']);
 });
