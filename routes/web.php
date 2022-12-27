@@ -68,28 +68,7 @@ use Illuminate\Support\Facades\Route;
 //     return 'all';
 // })->name('posts');
 
-
-Route::prefix('post')->group(function(){
-    Route::get('show', [PostController::class, 'show']);
-    Route::match(['get', 'post'], '/add', [PostController::class, 'addForm']);
-
-    Route::get('test', [PostController::class, 'test']);
-    Route::get('/user/{id}', [PostController::class, 'showUserCity']);
-
-});
-
-
-Route::prefix('country')->group(function(){
-    Route::get('add', [CountryController::class, 'add']);
-    Route::get('show',[CountryController::class, 'show']);
-});
-
-Route::prefix('user')->group(function(){
-    Route::get('add', [UserController::class, 'add']);
+Route::prefix('/user')->group(function(){
+    Route::match(['get', 'post'], '/add', [UserController::class, 'add']);
     Route::get('show', [UserController::class, 'show']);
-});
-
-Route::prefix('category')->group(function(){
-    Route::get('add', [CategoryController::class, 'add']);
-    Route::get('show/{id}', [CategoryController::class, 'show']);
 });
