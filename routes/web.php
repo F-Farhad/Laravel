@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 //Для избежания конфликтов следует писать более частные случаи маршрутов вначале, а потом - более общие.
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::get('/test', function(){
 //     return 'it\'s test route';
@@ -72,3 +72,5 @@ Route::prefix('/user')->group(function(){
     Route::match(['get', 'post'], '/add', [UserController::class, 'add']);
     Route::get('show', [UserController::class, 'show']);
 });
+
+Route::get('show', [TestController::class, 'show']);
